@@ -1,0 +1,34 @@
+{
+    "name": "Input map",
+    "maps": [
+        {
+            "name": "Action map",
+            "id": "d4acf3f7-bfeb-4852-83f9-b16de9095427",
+            "actions": [
+                {
+                    "name": "buttonPress",
+                    "type": "Button",
+                    "id": "ad2558ef-bd13-4b88-bbc5-11d7c8e9c027",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "61f77796-c07a-46b6-a5cf-32ba08a0656a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "buttonPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
