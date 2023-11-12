@@ -37,6 +37,6 @@ namespace Baz_geluk9.CoffeeMaker
             if (liquids.Count >= 2) AdjustLiquidPosition();
         }
 
-        private void AdjustLiquidPosition() => currentLiquid.transform.position = new Vector2(currentLiquid.transform.position.x, totalLiquidHeight);
+        private void AdjustLiquidPosition() => currentLiquid.transform.position = new Vector2(currentLiquid.transform.position.x, currentLiquid.transform.position.y + totalLiquidHeight);
     }
 }
