@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1079607036811697622, guid: 1747cbb0062831b409ad5f3f5ca6e0b9, type: 3}
+      propertyPath: tags.Array.data[0]
+      value: Pink Liquid
+      objectReference: {fileID: 0}
     - target: {fileID: 898994287815983959, guid: 1747cbb0062831b409ad5f3f5ca6e0b9, type: 3}
       propertyPath: m_Color.g
       value: 0.482
