@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Baz_geluk9.CoffeeMaker
 {
-    public class Liquid : MonoBehaviour
+    public sealed class Liquid : MonoBehaviour
     {
         public bool isFilling;
         [SerializeField] private float fillPercentage;
