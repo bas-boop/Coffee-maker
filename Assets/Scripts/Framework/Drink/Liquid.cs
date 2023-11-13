@@ -5,10 +5,10 @@ namespace Baz_geluk9.CoffeeMaker
     public sealed class Liquid : MonoBehaviour
     {
         public bool isFilling;
-        [SerializeField] private float fillPercentage;
+        [SerializeField] private double fillPercentage;
         [field: SerializeField] public Transform HighestPoint { get; private set; }
 
-        public float FillPercentage
+        public double FillPercentage
         {
             get => fillPercentage;
             private set
@@ -34,7 +34,7 @@ namespace Baz_geluk9.CoffeeMaker
             FillPercentage += 1f * Time.deltaTime;
 
             var scale = transform.localScale;
-            scale.y = FillPercentage;
+            scale.y = (float)FillPercentage;
             transform.localScale = scale;
         }
     }

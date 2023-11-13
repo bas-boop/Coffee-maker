@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c4f6ef0f5e5d24689101c35a49e9d0, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  npcOrder:
+    liquids:
+    - {fileID: 492459599702232318, guid: d96380b2603bc6b4ebc519e202fe9bac, type: 3}
+    liquidHeights:
+    - 1
+    mainDecoration: {fileID: 7033416418987737360, guid: 64d338626f9fd494784289f55948bf4f, type: 3}
+    secondaryDecoration: {fileID: 8560133176053144543, guid: 1dde0c7239e0d834d94f8de8149fe78e, type: 3}

@@ -92,6 +92,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cherry Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8553298969833962750, guid: 4e1045e3847329d4d9c0389da453a9ec, type: 3}
+      propertyPath: targetPosition.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553298969833962750, guid: 4e1045e3847329d4d9c0389da453a9ec, type: 3}
+      propertyPath: targetPosition.y
+      value: 1.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

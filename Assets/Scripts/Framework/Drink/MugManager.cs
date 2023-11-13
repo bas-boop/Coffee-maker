@@ -5,21 +5,13 @@ namespace Baz_geluk9.CoffeeMaker
 {
     public sealed class MugManager : MonoBehaviour
     {
-        public struct MugData
-        {
-            public List<Liquid> Liquids;
-            public List<float> LiquidHeights;
-            public DrinkDecoration MainDecoration;
-            public DrinkDecoration SecondaryDecoration;
-        }
-        
         [SerializeField] private List<Liquid> liquids = new ();
         [SerializeField] private Liquid currentLiquid;
         [SerializeField] private DrinkDecoration mainDecoration;
         [SerializeField] private DrinkDecoration secondaryDecoration;
-        [SerializeField] private float totalLiquidHeight;
+        [SerializeField] private double totalLiquidHeight;
 
-        private MugData _currentMugData;
+        private MugData _currentMugData = new MugData();
 
         private void Update()
         {
@@ -54,28 +46,29 @@ namespace Baz_geluk9.CoffeeMaker
             if(totalLiquidHeight < 1) return;
 
             if (newDecoration.gameObject.HasTag("MainDeco"))
-                mainDecoration = Instantiate(newDecoration, 
-                    new Vector2(transform.position.x, totalLiquidHeight), transform.rotation, transform);
+                mainDecoration = Instantiate(newDecoration, newDecoration.TargetPosition, transform.rotation, transform);
             else if (newDecoration.gameObject.HasTag("SecondaryDeco"))
-                secondaryDecoration = Instantiate(newDecoration, 
-                    new Vector2(transform.position.x, totalLiquidHeight), transform.rotation, transform);
+                secondaryDecoration = Instantiate(newDecoration, newDecoration.TargetPosition, transform.rotation, transform);
         }
 
         public MugData GetMugData()
         {
+            _currentMugData = new MugData(new List<Liquid>(), new List<double>());
+            
             var lenght = liquids.Count;
             for (int i = 0; i < lenght; i++)
             {
-                _currentMugData.Liquids.Add(liquids[i]);
-                _currentMugData.LiquidHeights.Add(liquids[i].transform.localScale.y);
+                _currentMugData.liquids.Add(liquids[i]);
+                _currentMugData.liquidHeights.Add(liquids[i].transform.localScale.y);
             }
             
-            if (mainDecoration) _currentMugData.MainDecoration = mainDecoration;
-            if (secondaryDecoration) _currentMugData.SecondaryDecoration = secondaryDecoration;
+            if (mainDecoration) _currentMugData.mainDecoration = mainDecoration;
+            if (secondaryDecoration) _currentMugData.secondaryDecoration = secondaryDecoration;
             
             return _currentMugData;
         }
         
-        private void AdjustLiquidPosition() => currentLiquid.transform.position = new Vector2(currentLiquid.transform.position.x, currentLiquid.transform.position.y + totalLiquidHeight);
+        private void AdjustLiquidPosition() => currentLiquid.transform.position =
+            new Vector2(currentLiquid.transform.position.x, currentLiquid.transform.position.y + (float)totalLiquidHeight);
     }
 }
