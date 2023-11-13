@@ -3,4 +3,4 @@
 
 ## Script highlight:
 ### Pure C#
-[MugData](Assets\Scripts\Framework\Drink\MugData.cs)<br>
+[MugData](Assets/Scripts/Framework/Drink/MugData.cs)<br>
