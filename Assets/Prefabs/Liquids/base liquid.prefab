@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8962750923793394560}
   - component: {fileID: -1079607036811697622}
   m_Layer: 0
-  m_Name: Liquid
+  m_Name: base liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

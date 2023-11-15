@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Baz_geluk9.CoffeeMaker
@@ -60,6 +58,8 @@ namespace Baz_geluk9.CoffeeMaker
             AddJustGrade(_isGoodLiquids);
             AddJustGrade(_isLevel);
         }
+
+        public NpcNeeds Order => order;
 
         private void AddJustGrade(bool targetGrade) => grade = targetGrade ? grade : grade--;
     }
