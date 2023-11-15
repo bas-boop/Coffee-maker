@@ -39,7 +39,14 @@ namespace Baz_geluk9.CoffeeMaker
 
             for (int index = 0; index < lenght; index++)
             {
-                var currentLiquid = order.npcOrder.liquids[index];
+                Liquid currentLiquid = order.npcOrder.liquids[index];
+                Liquid nextLiquidInOrder = index + 1 < order.npcOrder.liquids.Count ? order.npcOrder.liquids[index + 1] : null;
+                Liquid nextLiquidInDelivered = index + 1 < deliveredOrder.liquids.Count ? deliveredOrder.liquids[index + 1] : null;
+
+                if (!nextLiquidInOrder && nextLiquidInDelivered
+                    || !nextLiquidInDelivered) 
+                    break;
+                
                 if (currentLiquid.gameObject.GetTag(0) != deliveredOrder.liquids[index].gameObject.GetTag(0)) continue;
                 
                 _isGoodLiquids = true;
