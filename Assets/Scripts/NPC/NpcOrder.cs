@@ -51,7 +51,7 @@ namespace Baz_geluk9.CoffeeMaker
                 break;
             }
 
-            Debug.Log(order.npcOrder.MainDecoEquals(deliveredOrder) + " "+ order.npcOrder.SecondaryDecoEquals(deliveredOrder) + " " + _isGoodLiquids + " " + _isLevel);
+            // Debug.Log(order.npcOrder.MainDecoEquals(deliveredOrder) + " "+ order.npcOrder.SecondaryDecoEquals(deliveredOrder) + " " + _isGoodLiquids + " " + _isLevel);
             
             AddJustGrade(order.npcOrder.MainDecoEquals(deliveredOrder));
             AddJustGrade(order.npcOrder.SecondaryDecoEquals(deliveredOrder));
@@ -59,7 +59,7 @@ namespace Baz_geluk9.CoffeeMaker
             AddJustGrade(_isLevel);
         }
 
-        public NpcNeeds Order => order;
+        public NpcNeeds Order { get => order; set => order = value; }
 
         private void AddJustGrade(bool targetGrade) => grade = targetGrade ? grade : grade--;
     }
