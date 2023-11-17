@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,10 @@ namespace Baz_geluk9.CoffeeMaker
         [SerializeField] private DrinkDecoration secondaryDecoration;
         [SerializeField] private double totalLiquidHeight;
 
-        private MugData _currentMugData = new MugData();
+        private MugData _currentMugData;
+        private NpcOrder _npcOrder;
+
+        private void Awake() => _npcOrder = FindObjectOfType<NpcOrder>();
 
         private void Update()
         {
@@ -66,6 +70,12 @@ namespace Baz_geluk9.CoffeeMaker
             if (secondaryDecoration) _currentMugData.secondaryDecoration = secondaryDecoration;
             
             return _currentMugData;
+        }
+
+        public void DeliverMug()
+        {
+            _npcOrder.GradeOrder(GetMugData());
+            // todo: remove current mug
         }
         
         private void AdjustLiquidPosition() => currentLiquid.transform.position =

@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Baz_geluk9.CoffeeMaker
 {
@@ -7,17 +10,31 @@ namespace Baz_geluk9.CoffeeMaker
         [SerializeField] private int grade = 5;
         [SerializeField] private double liquidFillMargin = 0.1;
         [SerializeField] private NpcNeeds order;
+        [SerializeField] private NpcNeeds[] allOrders;
+        [SerializeField, Range(0, 180)] private int waitTime;
+        [SerializeField] private NpcOrdering npcOrdering;
 
         private bool _isLevel = true;
         private bool _isGoodLiquids;
+        private float _waitingTime;
         
-        [SerializeField] private bool executeGradeOrder;
+        // [SerializeField] private bool executeGradeOrder;
+
+        private void Start() => SetNewEverything();
 
         private void Update() {
-            if (executeGradeOrder) {
-                GradeOrder(FindObjectOfType<MugManager>().GetMugData());
-                executeGradeOrder = false; // Reset the boolean
+            // if (executeGradeOrder) {
+            //     GradeOrder(FindObjectOfType<MugManager>().GetMugData());
+            //     executeGradeOrder = false; // Reset the boolean
+            // }
+
+            if (_waitingTime < 0)
+            {
+                order = ScriptableObject.CreateInstance<NpcNeeds>();
+                GradeOrder(order.npcOrder);
             }
+            
+            _waitingTime -= Time.deltaTime;
         }
 
         public void GradeOrder(MugData deliveredOrder)
@@ -57,9 +74,24 @@ namespace Baz_geluk9.CoffeeMaker
             AddJustGrade(order.npcOrder.SecondaryDecoEquals(deliveredOrder));
             AddJustGrade(_isGoodLiquids);
             AddJustGrade(_isLevel);
+            
+            SetNewEverything();
         }
 
-        public NpcNeeds Order { get => order; set => order = value; }
+        private void SetNewEverything()
+        {
+            SetNpcOder();
+            grade = 5;
+            _waitingTime = waitTime;
+            npcOrdering.NpcOrder = order.npcOrder;
+            npcOrdering.ShowOrder();
+        }
+        
+        private void SetNpcOder()
+        {
+            int randomNumber = Random.Range(0, allOrders.Length);
+            order = allOrders[randomNumber];
+        }
 
         private void AddJustGrade(bool targetGrade) => grade = targetGrade ? grade : grade--;
     }
