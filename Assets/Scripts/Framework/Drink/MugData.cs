@@ -21,7 +21,15 @@ namespace Baz_geluk9.CoffeeMaker
             mainDecoration = null;
             secondaryDecoration = null;
         }
-        
+
+        public bool Null()
+        {
+            return liquids.Count == 0
+                   && liquidHeights.Count == 0
+                   && !mainDecoration
+                   && !secondaryDecoration;
+        }
+
         public bool Equals(MugData other) {
             return liquids.SequenceEqual(other.liquids)
                    && liquidHeights.SequenceEqual(other.liquidHeights)

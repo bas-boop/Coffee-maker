@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -75,7 +75,38 @@ namespace Baz_geluk9.CoffeeMaker
         public void DeliverMug()
         {
             _npcOrder.GradeOrder(GetMugData());
-            // todo: remove current mug
+            StartCoroutine(WaitUntilNewMug());
+        }
+        
+        public void RefreshMug()
+        {
+            foreach (var liquid in liquids)
+            {
+                Destroy(liquid.gameObject);
+            }
+
+            liquids.Clear();
+            currentLiquid = null;
+            _currentMugData = new MugData();
+            totalLiquidHeight = 0;
+
+            if (mainDecoration)
+            {
+                Destroy(mainDecoration.gameObject);
+                mainDecoration = null;
+            }
+
+            if (secondaryDecoration)
+            {
+                Destroy(secondaryDecoration.gameObject);
+                secondaryDecoration = null;
+            }
+        }
+
+        private IEnumerator WaitUntilNewMug()
+        {
+            yield return new WaitForSeconds(5);
+            RefreshMug();
         }
         
         private void AdjustLiquidPosition() => currentLiquid.transform.position =

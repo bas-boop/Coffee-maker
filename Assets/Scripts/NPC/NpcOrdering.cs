@@ -15,6 +15,13 @@ namespace Baz_geluk9.CoffeeMaker
         private const string MainDecoText = " and a ";
         private const string SecDecoText = " and for last a ";
 
+        private const string FiveStarGrade = "This is the most perfect coffee I have seen.";
+        private const string FourStarGrade = "Looking good, thank you.";
+        private const string ThreeStarGrade = "Could be better :(";
+        private const string TwoStarGrade = "I not taking that, drink it your self!";
+        private const string OneStarGrade = "This is not my order!!!";
+        private const string ZeroStarGrade = "Why must you hurt me in this way :'(";
+
         public void ShowOrder()
         {
             string text = String.Empty;
@@ -41,6 +48,20 @@ namespace Baz_geluk9.CoffeeMaker
             text += ".";
 
             oderText.text = text;
+        }
+
+        public void ShowGradeText(int grade)
+        {
+            oderText.text = grade switch
+            {
+                5 => FiveStarGrade,
+                4 => FourStarGrade,
+                3 => ThreeStarGrade,
+                2 => TwoStarGrade,
+                1 => OneStarGrade,
+                0 => ZeroStarGrade,
+                _ => oderText.text
+            };
         }
         
         public MugData NpcOrder { get => _npcOrder; set => _npcOrder = value; }

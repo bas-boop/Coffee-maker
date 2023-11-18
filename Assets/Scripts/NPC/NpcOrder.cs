@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,21 +16,14 @@ namespace Baz_geluk9.CoffeeMaker
         private bool _isLevel = true;
         private bool _isGoodLiquids;
         private float _waitingTime;
-        
-        // [SerializeField] private bool executeGradeOrder;
 
-        private void Start() => SetNewEverything();
+        private void Start() => SetNewEverything(true);
 
         private void Update() {
-            // if (executeGradeOrder) {
-            //     GradeOrder(FindObjectOfType<MugManager>().GetMugData());
-            //     executeGradeOrder = false; // Reset the boolean
-            // }
-
             if (_waitingTime < 0)
             {
-                order = ScriptableObject.CreateInstance<NpcNeeds>();
-                GradeOrder(order.npcOrder);
+                npcOrdering.ShowGradeText(0);
+                SetNewEverything();
             }
             
             _waitingTime -= Time.deltaTime;
@@ -39,6 +31,13 @@ namespace Baz_geluk9.CoffeeMaker
 
         public void GradeOrder(MugData deliveredOrder)
         {
+            if (deliveredOrder.Null())
+            {
+                npcOrdering.ShowGradeText(0);
+                SetNewEverything();
+                return;
+            }
+            
             if(order.npcOrder.Equals(deliveredOrder)) return; // perfect grade
 
             var lenght = order.npcOrder.liquids.Count;
@@ -67,24 +66,30 @@ namespace Baz_geluk9.CoffeeMaker
                 _isGoodLiquids = true;
                 break;
             }
-
-            // Debug.Log(order.npcOrder.MainDecoEquals(deliveredOrder) + " "+ order.npcOrder.SecondaryDecoEquals(deliveredOrder) + " " + _isGoodLiquids + " " + _isLevel);
             
             AddJustGrade(order.npcOrder.MainDecoEquals(deliveredOrder));
             AddJustGrade(order.npcOrder.SecondaryDecoEquals(deliveredOrder));
             AddJustGrade(_isGoodLiquids);
             AddJustGrade(_isLevel);
             
+            npcOrdering.ShowGradeText(grade);
+            
             SetNewEverything();
         }
 
-        private void SetNewEverything()
+        private void SetNewEverything(bool start = false)
         {
             SetNpcOder();
             grade = 5;
             _waitingTime = waitTime;
             npcOrdering.NpcOrder = order.npcOrder;
-            npcOrdering.ShowOrder();
+            StartCoroutine(DelayText(start));
+        }
+
+        private IEnumerator DelayText(bool start)
+        {
+            yield return new WaitForSeconds(5);
+            if (!start) npcOrdering.ShowOrder();
         }
         
         private void SetNpcOder()
@@ -93,6 +98,6 @@ namespace Baz_geluk9.CoffeeMaker
             order = allOrders[randomNumber];
         }
 
-        private void AddJustGrade(bool targetGrade) => grade = targetGrade ? grade : grade--;
+        private void AddJustGrade(bool targetGrade) => grade = targetGrade ? grade : grade - 1;
     }
 }
