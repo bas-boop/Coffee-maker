@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9c4f6ef0f5e5d24689101c35a49e9d0, type: 3}
-  m_Name: Test 1
+  m_Name: Matcha boba
   m_EditorClassIdentifier: 
   npcOrder:
     liquids:
-    - {fileID: 3946701948396824651, guid: 0615b3935e9e1f34c8e4d6c66e15d435, type: 3}
     - {fileID: 492459599702232318, guid: d96380b2603bc6b4ebc519e202fe9bac, type: 3}
     liquidHeights:
-    - 0.5
-    - 0.5
-    mainDecoration: {fileID: 0}
-    secondaryDecoration: {fileID: 0}
+    - 1
+    mainDecoration: {fileID: 1612329897726289995, guid: 8170c9603ad3bb548a2cfc956bc4a6cb, type: 3}
+    secondaryDecoration: {fileID: 6331092569974121950, guid: fe51c4d06c3c048428202d8ccdf8d7dd, type: 3}

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1079607036811697622, guid: 1747cbb0062831b409ad5f3f5ca6e0b9, type: 3}
       propertyPath: tags.Array.data[0]
-      value: Green Liquid
+      value: matcha tea
       objectReference: {fileID: 0}
     - target: {fileID: 898994287815983959, guid: 1747cbb0062831b409ad5f3f5ca6e0b9, type: 3}
       propertyPath: m_Color.b
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2037412170962794408, guid: 1747cbb0062831b409ad5f3f5ca6e0b9, type: 3}
       propertyPath: m_Name
-      value: Green Liquid Variant
+      value: matcha tea
       objectReference: {fileID: 0}
     - target: {fileID: 4599238437252472445, guid: 1747cbb0062831b409ad5f3f5ca6e0b9, type: 3}
       propertyPath: m_RootOrder

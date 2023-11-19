@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c4f6ef0f5e5d24689101c35a49e9d0, type: 3}
+  m_Name: TransFlag
+  m_EditorClassIdentifier: 
+  npcOrder:
+    liquids:
+    - {fileID: 8962750923793394560, guid: 8b76957f5b728bb4a9895a514f6b2181, type: 3}
+    - {fileID: 3946701948396824651, guid: 0615b3935e9e1f34c8e4d6c66e15d435, type: 3}
+    - {fileID: 8962750923793394560, guid: 3fb38bd33215b0a4cb3b30c6f40c9080, type: 3}
+    liquidHeights:
+    - 0.25
+    - 0.5
+    - 0.25
+    mainDecoration: {fileID: 0}
+    secondaryDecoration: {fileID: 0}

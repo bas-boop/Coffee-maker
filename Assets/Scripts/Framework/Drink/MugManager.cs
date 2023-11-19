@@ -50,12 +50,18 @@ namespace Baz_geluk9.CoffeeMaker
             if(totalLiquidHeight < 1) return;
 
             if (newDecoration.gameObject.HasTag("MainDeco"))
-                mainDecoration = Instantiate(newDecoration, newDecoration.TargetPosition, transform.rotation, transform);
+            {
+                if (!mainDecoration)
+                    mainDecoration = Instantiate(newDecoration, newDecoration.TargetPosition, newDecoration.transform.rotation, transform);
+            }
             else if (newDecoration.gameObject.HasTag("SecondaryDeco"))
-                secondaryDecoration = Instantiate(newDecoration, newDecoration.TargetPosition, transform.rotation, transform);
+            {
+                if (!secondaryDecoration)
+                    secondaryDecoration = Instantiate(newDecoration, newDecoration.TargetPosition, newDecoration.transform.rotation, transform);
+            }
         }
 
-        public MugData GetMugData()
+        private MugData GetMugData()
         {
             _currentMugData = new MugData(new List<Liquid>(), new List<double>());
             

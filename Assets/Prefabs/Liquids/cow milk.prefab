@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8962750923793394560}
   - component: {fileID: -1079607036811697622}
   m_Layer: 0
-  m_Name: base liquid
+  m_Name: cow milk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags:
-  - Liquid
+  - Cow milk
 --- !u!1 &3705360766165318141
 GameObject:
   m_ObjectHideFlags: 0

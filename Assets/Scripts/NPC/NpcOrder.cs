@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Baz_geluk9.CoffeeMaker
@@ -12,6 +14,7 @@ namespace Baz_geluk9.CoffeeMaker
         [SerializeField] private NpcNeeds[] allOrders;
         [SerializeField, Range(0, 180)] private int waitTime;
         [SerializeField] private NpcOrdering npcOrdering;
+        [SerializeField] private Image timerImage;
 
         private bool _isLevel = true;
         private bool _isGoodLiquids;
@@ -27,6 +30,7 @@ namespace Baz_geluk9.CoffeeMaker
             }
             
             _waitingTime -= Time.deltaTime;
+            UpdateTimerFill();
         }
 
         public void GradeOrder(MugData deliveredOrder)
@@ -76,6 +80,12 @@ namespace Baz_geluk9.CoffeeMaker
             
             SetNewEverything();
         }
+        
+        private void UpdateTimerFill()
+        {
+            float fillAmount = _waitingTime / waitTime;
+            timerImage.fillAmount = fillAmount;
+        }
 
         private void SetNewEverything(bool start = false)
         {
@@ -91,11 +101,14 @@ namespace Baz_geluk9.CoffeeMaker
             yield return new WaitForSeconds(5);
             if (!start) npcOrdering.ShowOrder();
         }
-        
+
         private void SetNpcOder()
         {
-            int randomNumber = Random.Range(0, allOrders.Length);
-            order = allOrders[randomNumber];
+            List<NpcNeeds> availableOrders = new List<NpcNeeds>(allOrders);
+            availableOrders.Remove(order);
+            
+            int randomNumber = Random.Range(0, availableOrders.Count);
+            order = availableOrders[randomNumber];
         }
 
         private void AddJustGrade(bool targetGrade) => grade = targetGrade ? grade : grade - 1;

@@ -67,7 +67,7 @@ namespace Baz_geluk9.CoffeeMaker
                 return false;
             
             if (thisDeco && otherDeco)
-                return thisDeco.gameObject.GetTag(0) == otherDeco.gameObject.GetTag(0);
+                return thisDeco.gameObject.GetTag(1) == otherDeco.gameObject.GetTag(1);
             
             return !thisDeco && !otherDeco;
         }
